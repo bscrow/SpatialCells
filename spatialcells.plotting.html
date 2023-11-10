@@ -87,12 +87,75 @@
 <p>Access via either <code class="docutils literal notranslate"><span class="pre">spatialcells.plotting</span></code> or <code class="docutils literal notranslate"><span class="pre">spatialcells.plt</span></code>.</p>
 <section id="plotboundary">
 <h2>plotBoundary<a class="headerlink" href="#plotboundary" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.plt.plotBoundary">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.plt.</span></code><code class="sig-name descname"><span class="pre">plotBoundary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spatialcells.plt.plotBoundary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the boundary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>boundary</strong> – the MultiPolygon boundary of the region</p></li>
+<li><p><strong>ax</strong> – the matplotlib ax object. If None (default), use plt.</p></li>
+<li><p><strong>kwargs</strong> – kwargs for matplotlib.pyplot.plot</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="plotcommunities">
 <h2>plotCommunities<a class="headerlink" href="#plotcommunities" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.plt.plotCommunities">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.plt.</span></code><code class="sig-name descname"><span class="pre">plotCommunities</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">communitycolumn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_first_n_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spatialcells.plt.plotCommunities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot largest communities on a scatter plot. Each community is labelled as:
+(rank in descending number of cells : index of community)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adata</strong> – AnnData object</p></li>
+<li><p><strong>ret</strong> – return value of spc.spa.getCommunities</p></li>
+<li><p><strong>communitycolumn</strong> – column name of the community column in adata.obs</p></li>
+<li><p><strong>plot_first_n_clusters</strong> – plot and number the largest n communities</p></li>
+<li><p><strong>kwargs</strong> – keyword arguments for matplotlib.pyplot.plot</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="plotregions">
 <h2>plotRegions<a class="headerlink" href="#plotregions" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.plt.plotRegions">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.plt.</span></code><code class="sig-name descname"><span class="pre">plotRegions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regions_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['k',</span> <span class="pre">'r',</span> <span class="pre">'b',</span> <span class="pre">'g']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontcolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">foreground_linewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spatialcells.plt.plotRegions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the regions in the regions_list and label them with their index in
+the list.
+labels are placed at the lower left corner of each region. Their position
+can be adjusted by x_offset and y_offset, and the overall label_bounds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>regions_list</strong> – a list of MultiPolygon regions</p></li>
+<li><p><strong>add_label</strong> – whether to label the regions</p></li>
+<li><p><strong>ax</strong> – the matplotlib ax object.</p></li>
+<li><p><strong>label_prefix</strong> – a prefix to the label of each region</p></li>
+<li><p><strong>x_offset</strong> – the x offset of each label</p></li>
+<li><p><strong>y_offset</strong> – the y offset of the label</p></li>
+<li><p><strong>fontsize</strong> – the fontsize of the label</p></li>
+<li><p><strong>label_bounds</strong> – the bounds of all the label (minx, miny, maxx, maxy).
+If None, the bounds of the regions_list will be used.</p></li>
+<li><p><strong>colors_list</strong> – a list of colors that will be cycled through for each
+region.</p></li>
+<li><p><strong>fontcolor</strong> – the fontcolor of the label</p></li>
+<li><p><strong>foreground_linewidth</strong> – the foreground linewidth of the label. Adjusts
+the thickness of the white border around each label.</p></li>
+<li><p><strong>kwargs</strong> – kwargs for matplotlib.pyplot.plot</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 

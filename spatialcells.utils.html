@@ -84,9 +84,45 @@
 <p>Utility functions for spatialcells, especially for import/export.</p>
 <section id="exportregion">
 <h2>exportRegion<a class="headerlink" href="#exportregion" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.utils.exportRegion">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.utils.</span></code><code class="sig-name descname"><span class="pre">exportRegion</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/utils/_exportRegion.html#exportRegion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.utils.exportRegion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a region to a file. The file type is determined by the
+file extension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>region</strong> – The region/boundary object to export.</p></li>
+<li><p><strong>filename</strong> – The name of the file to export to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>geojson string</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="importregion">
 <h2>importRegion<a class="headerlink" href="#importregion" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.utils.importRegion">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.utils.</span></code><code class="sig-name descname"><span class="pre">importRegion</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/utils/_importRegion.html#importRegion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.utils.importRegion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import a region from a file. The file type is determined by the 
+file extension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – The name of the file to import from.</p></li>
+<li><p><strong>scale</strong> – The scale factor to apply to the coordinates.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>region/boundary object</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 

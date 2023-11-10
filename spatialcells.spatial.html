@@ -51,7 +51,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#getcommunities">getCommunities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#getextendedboundary">getExtendedBoundary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#getshrunkenboundary">getShrunkenBoundary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#utility-functions">Utility functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-spatialcells.spatial._utils">Utility functions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="spatialcells.measurements.html">spatialcells.measurements</a></li>
@@ -92,27 +92,233 @@
 <p>Access via either <code class="docutils literal notranslate"><span class="pre">spatialcells.spatial</span></code> or <code class="docutils literal notranslate"><span class="pre">spatialcells.spa</span></code>.</p>
 <section id="assignpointstoregions">
 <h2>assignPointsToRegions<a class="headerlink" href="#assignpointstoregions" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.spatial.assignPointsToRegions">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.spatial.</span></code><code class="sig-name descname"><span class="pre">assignPointsToRegions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">anndata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundaries_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assigncolumn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'region'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'BG'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/spatial/_assignPointsToRegions.html#assignPointsToRegions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.spatial.assignPointsToRegions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign points to regions based on the boundaries. The region assignment is
+based on the order of the boundaries, so the innermost region should be the
+first element of boundaries_list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>anndata</strong> – Anndata object</p></li>
+<li><p><strong>boundaries_list</strong> – List of boundaries</p></li>
+<li><p><strong>region_names</strong> – List of region names. The order and length should match boundaries_list</p></li>
+<li><p><strong>assigncolumn</strong> – Column name for the region assignment</p></li>
+<li><p><strong>default</strong> – Default region name for points that are not assigned to any region</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="bufferboundary">
 <h2>bufferBoundary<a class="headerlink" href="#bufferboundary" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.spatial.bufferBoundary">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.spatial.</span></code><code class="sig-name descname"><span class="pre">bufferBoundary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/spatial/_bufferBoundary.html#bufferBoundary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.spatial.bufferBoundary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer a boundary by a given offset. Negative offset will shrink the boundary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>boundary</strong> – the boundary to be buffered</p></li>
+<li><p><strong>offset</strong> – the offset</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the buffered boundary</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="estimateinitialdistance">
 <h2>estimateInitialDistance<a class="headerlink" href="#estimateinitialdistance" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.spatial.estimateInitialDistance">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.spatial.</span></code><code class="sig-name descname"><span class="pre">estimateInitialDistance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markers_of_interest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/spatial/_estimateInitialDistance.html#estimateInitialDistance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.spatial.estimateInitialDistance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use hierarchical clustering to get the checkpoints to estimate the distance parameter
+for density-based clustering algorithms, e.g., DBSCAN.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adata</strong> – the anndata object</p></li>
+<li><p><strong>markers_of_interest</strong> – the list of marker names to subset the data</p></li>
+<li><p><strong>sampling_ratio</strong> – the sampling ratio to subsample the data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the list of distances</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="getboundary">
 <h2>getBoundary<a class="headerlink" href="#getboundary" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.spatial.getBoundary">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.spatial.</span></code><code class="sig-name descname"><span class="pre">getBoundary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">anndata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">communitycolumn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">communityIndexList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/spatial/_getBoundary.html#getBoundary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.spatial.getBoundary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a boundary for the communities of interest as a Shapely MultiPolygon.</p>
+<p>The boundary is defined based on the alpha shape of points in the
+communities. The alpha shape is the generalization of the convex hull,
+and is generated via Delaunay triangulation of all the points of interest.
+The alpha parameter controls the longest edge that can appear in the alpha
+shape. Smaller alpha gives more detailed boundary, but may appear more
+jagged and may leave out some points that are too far away from the rest
+of the points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>anndata</strong> – the anndata object</p></li>
+<li><p><strong>communitycolumn</strong> – the column name of the community</p></li>
+<li><p><strong>communityIndexList</strong> – the list of community indexes</p></li>
+<li><p><strong>alpha</strong> – the alpha parameter for alpha shape. Smaller alpha gives
+more detailed boundary, but may appear more jagged.</p></li>
+<li><p><strong>debug</strong> – whether to return the polygons and edge components</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the boundaries of components as a MultiPolygon object</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="getcommunities">
 <h2>getCommunities<a class="headerlink" href="#getcommunities" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.spatial.getCommunities">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.spatial.</span></code><code class="sig-name descname"><span class="pre">getCommunities</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markers_of_interest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newcolumn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'COI_community'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">core_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/spatial/_getCommunities.html#getCommunities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.spatial.getCommunities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the communities of interest (COI) using DBSCAN</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adata</strong> – the anndata object</p></li>
+<li><p><strong>markers_of_interest</strong> – the list of marker names to subset the data</p></li>
+<li><p><strong>eps</strong> – the eps parameter for DBSCAN</p></li>
+<li><p><strong>min_samples</strong> – Minimum number of samples in each community</p></li>
+<li><p><strong>newcolumn</strong> – the column name of the community</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the communities of interest (COI)</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="getextendedboundary">
 <h2>getExtendedBoundary<a class="headerlink" href="#getextendedboundary" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.spatial.getExtendedBoundary">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.spatial.</span></code><code class="sig-name descname"><span class="pre">getExtendedBoundary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundaries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/spatial/_getExtendedBoundary.html#getExtendedBoundary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.spatial.getExtendedBoundary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the expand the boundary of the communities of interest</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>boundaries</strong> – the boundaries of components</p></li>
+<li><p><strong>offset</strong> – the offset to extend the boundary</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the extended boundaries of components.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="getshrunkenboundary">
 <h2>getShrunkenBoundary<a class="headerlink" href="#getshrunkenboundary" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.spatial.getShrunkenBoundary">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.spatial.</span></code><code class="sig-name descname"><span class="pre">getShrunkenBoundary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundaries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/spatial/_getShrunkenBoundary.html#getShrunkenBoundary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.spatial.getShrunkenBoundary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shrink the boundary of the communities of interest.
+Wrapper of bufferBoundary with negative offset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>boundaries</strong> – the boundaries of components</p></li>
+<li><p><strong>offset</strong> – the offset to shrink the boundary</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the shrunken boundaries of components.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="utility-functions">
-<h2>Utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline">¶</a></h2>
+<section id="module-spatialcells.spatial._utils">
+<span id="utility-functions"></span><h2>Utility functions<a class="headerlink" href="#module-spatialcells.spatial._utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.spatial._utils.getAlphaShapes">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.spatial._utils.</span></code><code class="sig-name descname"><span class="pre">getAlphaShapes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/spatial/_utils.html#getAlphaShapes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.spatial._utils.getAlphaShapes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the alpha shape of a set of points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> – np.array of shape (n,2) points.</p></li>
+<li><p><strong>alpha</strong> – alpha value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>set of (i,j) point pairs representing edges of the alpha-shape.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="spatialcells.spatial._utils.getComponents">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.spatial._utils.</span></code><code class="sig-name descname"><span class="pre">getComponents</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_holes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/spatial/_utils.html#getComponents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.spatial._utils.getComponents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the components of a boundary defined by a MultiPolygon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>boundary</strong> – the boundary to get components from</p></li>
+<li><p><strong>keep_holes</strong> – whether to keep holes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a list of components, where each component is a MultiPolygon</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="spatialcells.spatial._utils.getHoles">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.spatial._utils.</span></code><code class="sig-name descname"><span class="pre">getHoles</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/spatial/_utils.html#getHoles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.spatial._utils.getHoles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the holes within boundary components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>boundary</strong> – the boundary to get holes from</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a list of holes, where each hole is a MultiPolygon</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="spatialcells.spatial._utils.pruneSmallComponents">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.spatial._utils.</span></code><code class="sig-name descname"><span class="pre">pruneSmallComponents</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_area</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">holes_min_area</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">holes_min_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialcells/spatial/_utils.html#pruneSmallComponents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spatialcells.spatial._utils.pruneSmallComponents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prune small components from a boundary defined by a MultiPolygon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>boundary</strong> – the boundary to prune</p></li>
+<li><p><strong>min_area</strong> – the minimum area of a polygon component to keep</p></li>
+<li><p><strong>min_edges</strong> – the minimum number of edges of a polygon component to keep</p></li>
+<li><p><strong>holes_min_area</strong> – the minimum area of a hole to keep the hole</p></li>
+<li><p><strong>holes_min_edges</strong> – the minimum number of edges of a hole to keep the hole</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the pruned boundary</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 

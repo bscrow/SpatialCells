@@ -85,9 +85,47 @@
 <p>Access via either <code class="docutils literal notranslate"><span class="pre">spatialcells.preprocessing</span></code> or <code class="docutils literal notranslate"><span class="pre">spatialcells.prep</span></code>.</p>
 <section id="setgate">
 <h2>setGate<a class="headerlink" href="#setgate" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.prep.setGate">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.prep.</span></code><code class="sig-name descname"><span class="pre">setGate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_marker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_positive'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spatialcells.prep.setGate" title="Permalink to this definition">¶</a></dt>
+<dd><p>A new column will be added for the marker.
+E.g., for a marker named by SOX10, SOX10_positive will be added, which has two values: True or False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adata</strong> – AnnData object</p></li>
+<li><p><strong>target_marker</strong> – the marker to be gated</p></li>
+<li><p><strong>gate</strong> – the gate value</p></li>
+<li><p><strong>marker_suffix</strong> – the suffix of the new column name</p></li>
+<li><p><strong>debug</strong> – if True, print the value counts of the new column</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="setgates">
 <h2>setGates<a class="headerlink" href="#setgates" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="spatialcells.prep.setGates">
+<code class="sig-prename descclassname"><span class="pre">spatialcells.prep.</span></code><code class="sig-name descname"><span class="pre">setGates</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_positive'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spatialcells.prep.setGates" title="Permalink to this definition">¶</a></dt>
+<dd><p>A new column will be added for a marker.
+E.g., for SOX10, SOX10_positive will be added, which has two values: True or False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adata</strong> – AnnData object</p></li>
+<li><p><strong>gate_file</strong> – the file containing the gate values for each marker</p></li>
+<li><p><strong>marker_suffix</strong> – the suffix of the new column name</p></li>
+<li><p><strong>debug</strong> – if True, print the value counts of the new column</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
